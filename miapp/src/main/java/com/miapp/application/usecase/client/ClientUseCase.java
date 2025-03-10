@@ -1,32 +1,32 @@
-package com.miapp.aplication.usecase;
+package com.miapp.application.usecase.client;
 
 import java.util.List;
 
-import com.miapp.domain.entity.Cliente;
+import com.miapp.domain.entity.Client;
 import com.miapp.domain.repository.ClientRespository;
 
-public class ClienteCasoUso {
+public class ClientUseCase {
     private final ClientRespository repository;
 
-    public ClienteCasoUso(ClientRespository repository) {
+    public ClientUseCase(ClientRespository repository) {
         this.repository = repository;
     }
 
     public void registrarCliente(int id, String nombre, String email) {
-        Cliente cliente = new Cliente(id, nombre, email);
+        Client cliente = new Client(id, nombre, email);
         repository.guardar(cliente);
     }
 
-    public Cliente obtenerCliente(int id) {
+    public Client obtenerCliente(int id) {
         return repository.buscarPorId(id);
     }
 
-    public List<Cliente> listarClientes() {
+    public List<Client> listarClientes() {
         return repository.listarTodos();
     }
 
     public void actualizarCliente(int id, String nombre, String email) {
-        Cliente cliente = new Cliente(id, nombre, email);
+        Client cliente = new Client(id, nombre, email);
         repository.actualizar(cliente);
     }
 

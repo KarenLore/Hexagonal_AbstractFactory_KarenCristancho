@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import com.miapp.config.HexaSingleton;
 
-public class ConexionMySQL implements ConexionBD{
+public class ConnMySql implements ConnectionDb {
     @Override
     public Connection getConexion() throws SQLException {
         HexaSingleton config = HexaSingleton.INSTANCIA;
@@ -16,4 +16,5 @@ public class ConexionMySQL implements ConexionBD{
 
         return DriverManager.getConnection(url, usuario, password);
     }
+
 }

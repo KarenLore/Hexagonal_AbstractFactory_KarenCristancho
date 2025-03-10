@@ -1,13 +1,13 @@
 package com.miapp.domain.entity;
 
-public class Cliente {
+public class Product {
     private int id;
     private String name;
-    private String email;
-    public Cliente(int id, String name, String email) {
+    private int stock;
+    public Product(int id, String name, int stock) {
         this.id = id;
         this.name = name;
-        this.email = email;
+        this.stock = stock;
     }
     public int getId() {
         return id;
@@ -21,10 +21,11 @@ public class Cliente {
     public void setName(String name) {
         this.name = name;
     }
-    public String getEmail() {
-        return email;
+    public int getStock() {
+        return stock;
     }
-    public void setEmail(String email) {
-        this.email = email;
+    public void setStock(int stock) {
+        this.stock = stock;
     }
+    
 }
