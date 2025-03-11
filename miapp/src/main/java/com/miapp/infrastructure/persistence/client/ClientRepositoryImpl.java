@@ -42,6 +42,8 @@ public class ClientRepositoryImpl implements ClientRespository {
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 return new Client(rs.getInt("id"), rs.getString("name"), rs.getString("email"));
+            } else {
+                System.out.println("El ID no existe");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -67,7 +69,7 @@ public class ClientRepositoryImpl implements ClientRespository {
 
     @Override
     public void actualizar(Client cliente) {
-        String sql = "UPDATE client SET name = ?, email = ? WHERE id = ?";
+        String sql = "UPDATE Client SET name = ?, email = ? WHERE id = ?";
         try (Connection conexion = connection.getConexion();
             PreparedStatement stmt = conexion.prepareStatement(sql)) {
             stmt.setString(1, cliente.getName());
