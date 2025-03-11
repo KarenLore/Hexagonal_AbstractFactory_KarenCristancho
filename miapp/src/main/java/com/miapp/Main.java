@@ -56,7 +56,7 @@ public class Main {
                                             System.out
                                                     .println("Error: El email debe contener '@'. Intente nuevamente.");
                                         }
-                                    } while (!email.contains("@")); 
+                                    } while (!email.contains("@"));
 
                                     clienteCasoUso.registrarCliente(id, nombre, email);
                                     System.out.println("El cliente se ha registrado exitosamente.");
@@ -158,12 +158,22 @@ public class Main {
                                     int id = 0;
                                     System.out.print("Ingrese el nombre del producto: ");
                                     String name = sc.nextLine();
-                                    System.out.print("Ingrese el stock del producto: ");
-                                    int stock = sc.nextInt();
-                                    sc.nextLine();
+
+                                    int stock;
+                                    do {
+                                        System.out.print("Ingrese el stock del producto: ");
+                                        stock = sc.nextInt();
+                                        sc.nextLine();
+                                        if (stock < 0) {
+                                            System.out.println(
+                                                    "Error: El stock no puede ser un número negativo. Intente nuevamente.");
+                                        }
+                                    } while (stock < 0);
+
                                     productoCasoUso.registrarproducto(id, name, stock);
                                     System.out.println("El producto se ha registrado exitosamente.");
                                     System.out.println("");
+
                                     break;
                                 case "2":
                                     System.out.print("Ingrese ID del Producto a buscar: ");
@@ -186,23 +196,23 @@ public class Main {
                                     if (productoCasoUso.obtenerproducto(idNuevoProducto) != null) {
                                         System.out.print("Ingresa el nuevo nombre del producto: ");
                                         String NombreProducto = sc.nextLine();
-                                        System.out.print("Ingresa el nuevo stock del producto: ");
-                                        int StockNuevo = sc.nextInt();
-                                        sc.nextLine();
-                                        System.out.println("");
 
-                                        System.out.println("Información anterior: ");
-                                        productoCasoUso.obtenerproducto(idNuevoProducto);
-
+                                        int StockNuevo;
+                                        do {
+                                            System.out.print("Ingresa el nuevo stock del producto: ");
+                                            StockNuevo = sc.nextInt();
+                                            sc.nextLine();
+                                            if (StockNuevo < 0) {
+                                                System.out.println(
+                                                        "Error: El stock no puede ser un número negativo. Intente nuevamente.");
+                                            }
+                                        } while (StockNuevo < 0);
                                         productoCasoUso.actualizarproducto(idNuevoProducto, NombreProducto, StockNuevo);
-                                        System.out.println("");
-
-                                        System.out.println("Información actualizada: ");
-                                        productoCasoUso.obtenerproducto(idNuevoProducto);
-                                        System.out.println("");
+                                        System.out.println("\nProducto Actualizado.");
                                     } else {
                                         System.out.println("El producto con ID " + idNuevoProducto + " no existe.");
                                     }
+
                                     System.out.println("-----------------------");
                                     break;
                                 case "4":
