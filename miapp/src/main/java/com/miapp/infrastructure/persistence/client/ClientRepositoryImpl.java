@@ -42,8 +42,6 @@ public class ClientRepositoryImpl implements ClientRespository {
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 return new Client(rs.getInt("id"), rs.getString("name"), rs.getString("email"));
-            } else {
-                System.out.println("El ID no existe");
             }
         } catch (SQLException e) {
             e.printStackTrace();
